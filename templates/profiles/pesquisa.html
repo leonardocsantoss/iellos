@@ -1,0 +1,54 @@
+{% extends 'base_site2.html' %}
+{% load i18n thumbnail elos_tags %}
+
+{% block compartilhar %}
+{% endblock %}
+
+{% block head_title %}{% trans 'Procurando...'%}{% endblock %}
+
+
+{% block body %}
+    <h2 class="entry-title">{% trans 'Procurando por ' %}{{ q }}</h2>
+
+    {% if result_profs %}
+    <h2>{% trans 'Perfis' %}</h2>
+    {% for resultado in result_profs %}
+        <div class="tread_comments_foto"><a href="{{ resultado.get_absolute_url }}"><img src="{% thumbnail user.profileimage.image 60x60 crop %}"/></a></div>
+        <div class="tread_comments_texto">
+            <a href="{{ resultado.get_absolute_url }}"><strong>{{ resultado.user.first_name }}</strong></a>
+            <br/>
+            {{ resultado.eu_sou|truncatewords:30 }}
+        </div>
+        <br/><br/><br/>
+    {% endfor %}
+
+    <br/><br/>
+    {% endif %}
+
+    {% if result_elos %}
+    <h2>{% trans 'Elos' %}</h2>
+    {% for resultado in result_elos %}
+        <div class="tread_comments_texto">
+            <a href="{{ resultado.get_absolute_url }}"><strong>{{ resultado.nome }}</strong></a>
+            <br/>
+            {{ resultado.desc|truncatewords:30 }}
+        </div>
+        <br/>
+    {% endfor %}
+    {% endif %}
+
+    {% if result_posts %}
+    <h2>{% trans 'Posts' %}</h2>
+    {% for resultado in result_posts %}
+        <div class="tread_comments_foto"><a href="{% url profiles resultado.user.username %}"><img src="{% profile_image resultado.user '60x60' %}"/></a></div>
+        <div class="tread_comments_texto">
+            {% trans 'Elos' %} {% for elo in resultado.elos.all %}<a href="{% url elo elo.slug %}?post_id={{ resultado.id }}"><strong>{{ elo }}</strong></a>{% if not forloop.last %} | {% endif %}{% endfor %}
+            <br/>
+            {% trans 'Por' %} <a href="{% url profiles resultado.user.username %}"><strong>{{ resultado.user }}</strong></a>
+            <br/>
+            {{ resultado.texto|truncatewords:30 }}
+        </div>
+        <br/>
+    {% endfor %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'banco_de_imagens/base.html' %}
+{% load i18n thumbnail %}
+
+{% block right %}{% endblock %}
+{% block style_left %}style="width: 100% !important;"{% endblock %}
+
+{% block left %}
+    <h1>{{ imagem }}</h1>
+    <ul class="ff-items fleft">
+        <li class="ff-item-type-1">
+            <div class="ff-item-image ff-image-box">
+                <div class="ff-image">
+                    <img src="{% thumbnail imagem.image 590x590 %}" id="{{ imagem.slug }}" >
+                </div>
+            </div>
+        </li>
+        <li class="ff-item-type-1">
+            <a href="javascript://" onclick="window.parent.location.href='{% url profiles imagem.criador.username %}'"><img src="{% thumbnail imagem.criador.profileimage.image 60x60 crop %}" alt="{{ imagem.criador.username }}"/></a>
+            <b>{% trans 'Data de criação' %}:</b> {{ imagem.data_criacao }}<br/>
+            <b>{% trans 'Descrição' %}:</b> {{ imagem.desc }}<br/>
+            <b>{% trans 'Tags' %}:</b> {{ imagem.tags }}<br/>
+            <a href="javascript://" onclick="window.parent.location.href='{% url user_posts %}?texto=http://iellos.com{{ imagem.get_absolute_url }}'" class="ui-nav-item addnew fleft"{% trans '>Compartilhar' %}</a>
+            {% if imagem.criador == user %}
+                <a href="{% url bi_imagem_editar imagem.slug %}" class="ui-nav-item addnew fleft">{% trans 'Editar' %}</a>
+                <a href="{% url bi_imagem_excluir imagem.slug %}" class="ui-nav-item addnew fleft">{% trans 'Excluir' %}</a>
+            {% endif %}
+        </li>
+    </ul>
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript' src='{{ STATIC_URL }}iellos/js/jquery-1.4.2.min.js'></script>
+<script src="{{ STATIC_URL }}iellos/js/ui/jquery-ui-1.8.16.custom.min.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='{{ STATIC_URL }}banco_de_imagens/js/jquery.tag.min.js'></script>
+<link media="screen" rel="stylesheet" href="{{ STATIC_URL }}banco_de_imagens/css/jquery.tag.css" type="text/css" />
+<link media="screen" rel="stylesheet" href="{{ STATIC_URL }}banco_de_imagens/css/jquery-ui.custom.css" type="text/css" />
+
+<script type='text/javascript'>
+    $(document).ready(function(){
+        $("#{{ imagem.slug }}").tag({
+            {% if imagem.criador == user %}
+            clickToTag: true,
+            canDelete: true,
+            minWidth: 70,
+            minHeight: 70,
+            save: function(width,height,top_pos,left,label,the_tag){
+                    $.post("{% url bi_imagem_tags imagem.slug %}",{'action':'save','width':width,'height':height,'top':top_pos,'left':left,'label':label},function(id){
+                            the_tag.setId(id);
+                    });
+            },
+            remove: function(id){
+                    $.post("{% url bi_imagem_tags imagem.slug %}",{'action':'delete','id':id});
+            },
+            {% else %}
+            clickToTag: false,
+            canDelete: false,
+            {% endif %}
+            defaultTags: [
+                {% for ponto in imagem.pontos %}
+                    {'id':{{ ponto.id }},'label':'{{ ponto.label }}','width':{{ ponto.width }},'height':{{ ponto.height }},'top':{{ ponto.top }},'left':{{ ponto.left }}},
+                {% endfor %}
+            ]
+        });
+    });
+</script>
+{% endblock %}

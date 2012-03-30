@@ -1,0 +1,100 @@
+body{padding: 0; margin: 0;background:#FFF; repeat-y;font-family:Trebuchet MS;font-size:11px;line-height:16px;color:#000000;}
+a{color:#000;}
+ol, ul {list-style: none;}
+a.img{border:0px;}
+*{margin:0;padding:0;outline:none;}
+a,a:hover,a:active{text-decoration:none;}
+.fleft{float:left !important;}
+.fright{float:right !important;}
+.navigation{float:left;width: 18%; height: 100%; }
+.photos{float: right; width: 80%; height: 100%;}
+.content{padding: 10px; margin-top: 50px; }
+.ui-nav{list-style:none;}
+.ui-nav li{width:100%;}
+.ui-nav-item{background:#D7D7D7;float:left;width:95%;padding:10px 8px;font-size:11px;margin:1px 1px 0 1px;}
+.ui-nav-item:hover{background:#DBDBDB}
+.search{width:100%;background: #f0f0f0;min-height:40px;float:left;}
+.srch-item{margin:10px 12px;background:#FFF;border:1px solid #999;padding:4px 3px;width:300px}
+.srch-item:hover,.srch-item:active,.srch-item:focus{border:1px solid #D6D6D6}
+.addnew{width:auto;float:right;margin:6px 10px;padding:10px 11px;}
+.ff-image-box{float:left;border:1px solid #666;overflow:hidden;}
+.ff-image-box:hover,.ff-image-box:active{border:1px solid #CCC !important;}
+.ff-image{overflow:hidden; padding:3px;}
+.ff-items{position:relative;margin:0 12px;padding-top:20px;}
+.ff-items a{display:block;position:relative;margin:4px;}
+.ff-items a .mind-cok{display:block;background:#FFF;font-style:normal;color:#000;font-weight:bold; width: 100%; height: 100%;position:absolute; padding-top: 30px;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);opacity:0;text-align:center;-webkit-transition:all 0.3s ease-in-out;-moz-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;-ms-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}
+.ff-items a:hover .mind-cok{-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";filter:alpha(opacity=100);opacity:1;}
+.ff-items li img{display:block;}
+.ff-items li{margin:0px 0px 5px 5px;float: left;}
+.mais {margin-right: 40%}
+
+
+/* ===[ Contact Form 7 Style ]=== */
+
+.wpcf7 input, .wpcf7 .select {
+	border:solid 1px #ddd;
+	padding:5px;
+	font-size:12px;
+	color:#444;
+}
+
+.wpcf7 input[type=text], .wpcf7 input[type=password] {
+    width: 300px;
+}
+
+.wpcf7 textarea {
+	margin:0;
+	border:solid 1px #e7e7e7;
+	padding:10px;
+	font-size:12px;
+	width:159px;
+	width:400px;
+	color:#444;
+}
+
+.wpcf7 input:focus, .wpcf7 textarea:focus {
+	background:#fff;
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 3px;
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 3px;
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 3px;
+    border: solid 1px #ddd;
+}
+
+.wpcf7 p {
+	font-size:11px;
+	font-weight:bold;
+	margin:0 0 15px 0;
+}
+
+.wpcf7 br {
+	margin-bottom:10px;
+}
+
+.wpcf7-submit {
+	color:#fff !important;
+	font-size:11px !important;
+	padding:10px 20px !important;
+	font-weight:bold !important;
+	border:none !important;
+        background: #6d6d6d !important;
+}
+
+.wpcf7-submit:hover {
+	text-decoration: none !important;
+    background: #6d6d6d !important;
+    cursor: pointer;
+}
+
+.wpcf7-submit.menor {
+    padding:7px 20px !important;
+}
+
+.frame_post textarea {
+    width: 523px;
+    max-width: 523px;
+    height: 80px;
+}
+
+.frame_post label {
+    display: none;
+}

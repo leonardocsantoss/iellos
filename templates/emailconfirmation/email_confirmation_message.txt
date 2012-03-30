@@ -1,0 +1,4 @@
+{% load i18n %}{% blocktrans with current_site.name as site_name %}{{ site_name }} - Confirmação do email: '{{ user }}'.
+
+Clique no link abaixo para confirmar a sua inscrição! {{ activate_url }}
+{% endblocktrans %}

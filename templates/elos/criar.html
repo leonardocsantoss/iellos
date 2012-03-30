@@ -1,0 +1,21 @@
+{% extends 'base_site2.html' %}
+{% load i18n uni_form %}
+
+{% block compartilhar %}
+{% endblock %}
+
+{% block head_title %}{% trans 'Criar elo'%}{% endblock %}
+
+
+{% block body %}
+    <h2 class="entry-title">{% trans "Criar elo" %}</h2>
+
+    <div class="wpcf7" id="wpcf7-f1-p216-o1">
+    <form method="POST" action="" class="wpcf7-form">{% csrf_token %}
+            {{ form_criar|as_uni_form }}
+          <br/>
+         <input type="submit"  class="wpcf7-submit" value="{% trans "Criar" %}"/>
+    </form>
+    </div>
+{% endblock %}
+

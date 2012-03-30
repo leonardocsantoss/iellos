@@ -1,0 +1,31 @@
+{% extends 'base_site2.html' %}
+{% load i18n uni_form comments %}
+
+
+{% block head_title %}{{ app }}{% endblock %}
+
+
+{% block compartilhar %}
+{% endblock %}
+
+
+{% block right_3 %}
+<div id="sticky" class="clearfix">
+    <h2 class="sticky-title">{% trans 'Aplicações...' %}</h2>
+    <!-- exemplo -->
+    <div class="widget meio">
+        <div class="twitter-box">
+            {% for app in user.profiledefault.apps_list %}
+            <h2><a href="{% url select_app app %}">{{ app }}</a></h2>
+            {% endfor %}
+            <div style="clear:both;"></div>
+            <a class="tweets-more" href="#" title="">{% trans 'Adicionar app' %} &rarr;</a>
+        </div>
+    </div>
+</div><!-- sticky -->
+{% endblock %}
+
+{% block body %}
+    <h2 class="entry-title">{{ app }}</h2>
+    <iframe src="/apps/{{ app }}/" height="1000px" name="{{ app }}" ></iframe>
+{% endblock %}

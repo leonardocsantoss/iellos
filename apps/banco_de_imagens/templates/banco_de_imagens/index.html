@@ -1,0 +1,68 @@
+{% extends 'banco_de_imagens/base.html' %}
+{% load i18n thumbnail %}
+
+{% block left %}
+    {% if q %}<h1> {% trans 'Pesquisando por' %}: {{ q }}</h1>{% endif %}
+    {% if tag %}<h1>{% trans 'Tag' %}: {{ tag }}</h1>{% endif %}
+    <ul class="ff-items fleft" id="allimages">
+        {% for imagem in imagens.object_list %}
+        <li>
+            <a href="{{ imagem.get_absolute_url }}" class="ff-image-box">
+                <div class="ff-item-image">
+                    <div class="mind-cok">
+                        <span>{{ imagem }}</span>
+                    </div>
+                    <div class="ff-image">
+                        <img src="{% thumbnail imagem.image 130x130 crop %}">
+                    </div>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="javascript://" class="ui-nav-item addnew mais">{% trans 'Carregar mais imagens' %}</a>
+{% endblock %}
+
+{% block extra_head %}
+    <script type='text/javascript' src='{{ STATIC_URL }}iellos/js/jquery-1.4.2.min.js'></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // Scroll globals
+            var pageNum = 1;
+            var hasNextPage = true;
+            var baseUrl = '{% url bi_index %}';
+
+            $('.mais').click( function() {
+                loadItems();
+            });
+
+            // loadOnScroll action
+            var loadItems = function() {
+                if (hasNextPage === false) {
+                    return false
+                }
+                pageNum = pageNum + 1;
+                var url = baseUrl + "scroll/" + pageNum + '/';
+                $.ajax({
+                    url: url,
+                    dataType: 'html',
+                    beforeSend: function( xhr ) {
+                        $('.mais').hide();
+                     },
+                    success: function(data) {
+                        $("#allimages").append(data);
+                        $('.mais').show();
+                    },
+                    error: function(xhr, ajaxOptions, thrownError){
+                        hasNextPage = false;
+                        $('.mais').hide();
+                    },
+                    complete: function(data, textStatus){
+                        loadInProgress = false;
+                        $(window).bind('scroll', loadOnScroll);
+                    }
+                });
+            };
+        });
+    </script>
+{% endblock %}

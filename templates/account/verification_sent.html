@@ -1,0 +1,12 @@
+{% extends "account/base_not_auth.html" %}
+
+
+{% block head_title %}Confirmação de email{% endblock %}
+
+{% block content %}
+<div class="item_description">
+    <h4>Enviamos um e-mail para <b>{{ email }}</b> para a verificação.</h4>
+    <br/>
+    <p>Siga o link fornecido para finalizar o processo de inscrição.</p>
+</div>
+{% endblock %}

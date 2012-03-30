@@ -1,0 +1,17 @@
+{% extends "login.html" %}
+{% load i18n %}
+
+
+{% block right_1_titulo %}{% trans 'O que aconteceu?' %}{% endblock %}
+{% block right_1_content %}
+    <div class="widget">
+        &rarr; {% trans 'Você está tentando entrar em uma página que não existe!' %}
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<img src="/static/iellos/images/doh.jpg" />
+<h2>{% trans "Desculpe, essa página não existe!" %}</h2>
+
+{% endblock %}

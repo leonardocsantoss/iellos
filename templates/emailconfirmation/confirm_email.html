@@ -1,0 +1,48 @@
+{% extends "login.html" %}
+{% load i18n %}
+
+
+
+{% block right_1_content %}
+    <!-- exemplo -->
+    <div class="widget">
+        <div class="wpcf7" id="wpcf7-f1-p216-o1">
+        <form method="POST" class="wpcf7-form login" action="{% url acct_login %}">{% csrf_token %}
+                <p>Email*<br />
+                    <span class="wpcf7-form-control-wrap">
+                        <input id="id_username" type="text" class="textinput" name="username" />
+                    </span>
+                </p>
+                <p>Senha*<br />
+                    <span class="wpcf7-form-control-wrap">
+                        <input id="id_password" type="password" class="passwordinput" name="password" />
+                    </span>
+                </p>
+                <p>Continuar conectado<br />
+                    <span class="wpcf7-form-control-wrap">
+                        <input id="id_remember" type="checkbox" class="checkboxinput" name="remember" />
+                    </span>
+                </p>
+            <input type="submit" class="wpcf7-submit" value="{% trans 'Entrar' %}"/>
+        </form>
+
+        </div>
+    </div>
+    <div style="padding: 10px 10px 10px 10px;">
+        <a href="{% url acct_passwd_reset %}">&rarr; {% trans 'Esqueci minha senha!' %}</a>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="item_description">
+    {% if email_address %}
+            <h4>{% trans 'Email confirmado com sucesso.' %}</h4>
+            <br/>
+            <p>{% trans 'Seja bem vindo ao ielso!' %}<br/>{% trans 'Agora você pode usar todos os serviços que o ehVentos disponibiliza para você!' %}</p>
+
+    {% else %}
+        <h4>{% trans 'Chave de confirmação inválida.' %}</h4>
+    {% endif %}
+    </div>
+{% endblock %}

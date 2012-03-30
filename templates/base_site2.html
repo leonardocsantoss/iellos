@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block extra_head %}
+<script type='text/javascript' src='{{ STATIC_URL }}iellos/js/jquery.maskedinput-1.2.2.min.js'></script>
+{% endblock %}
+
+
+{% block compartilhar %}
+{% endblock %}
+
+
+{% block content %}
+<div class="post clearfix project">
+    <div class="box">
+        <div class="shadow clearfix">
+            <div class="frame base_site2">
+                
+                {% block body %}{% endblock %}
+
+            </div><!-- frame -->
+        </div><!-- shadow -->
+    </div><!-- box -->
+</div><!--writing post-->
+{% endblock %}
