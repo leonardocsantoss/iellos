@@ -55,7 +55,7 @@
         <div class="elo_all">
             <div class="elo_all_left">
                 <div class="elo_img" align="center">
-                    {% elos_image elo.membros.all 48 130 %}
+                    {% elos_image elo.membros.all 49 130 %}
                 </div>
             </div>
             <div class="elo_all_right">

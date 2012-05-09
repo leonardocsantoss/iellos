@@ -8,7 +8,7 @@
 {% block right_1_image %}
     <div id="elo_img_all" align="center">
         <div class="elo_img">
-            {% elos_image elo.membros.all 48 130 %}
+            {% elos_image elo.membros.all 49 130 %}
         </div>
     </div>
 {% endblock %}

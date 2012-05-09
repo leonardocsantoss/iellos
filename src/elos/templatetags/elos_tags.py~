@@ -32,8 +32,8 @@ def elos_image(users, max, tam):
         usuarios = users
         xy = tam / int((len(users) ** 0.5)+0.8)
         thumbnail_options = dict(size=(xy, xy), crop=True)
-    retorno = ''
     for user in usuarios:
+        retorno = ''
         tumb = get_thumbnailer(user.profileimage.image).get_thumbnail(thumbnail_options)
         retorno += '<a href="%s"><img src="%s" title="%s"/></a>' % (reverse('profiles', kwargs={'username': user.username, }), tumb.url, user.first_name)
     return retorno

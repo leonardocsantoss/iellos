@@ -1,17 +1,15 @@
-{% load i18n uni_form %}
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
     <head>
-        <title>{% trans 'Bem vindo ao iellos' %}</title>
+        <title>Bem vindo ao iellos</title>
 
-        <meta name="description" content="{% block description %}{% trans 'O iellos é uma rede social que reúne pessoas a seus amigos e àqueles com quem trabalham, estudam e convivem. As pessoas participam do iellos para manter contato com seus amigos, compartilhar links e vídeos e aprender mais sobre as pessoas que conhecem.' %}{% endblock %}"/>
-        <meta name="keywords" content="{% trans 'iellos, vídeos, fotos, rede social, amigos, informação, blog, compartilhamento' %}"/>
-        <link rel="icon" href="{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/images/home.png" type="image/x-icon" />
+        <meta name="description" content="{% block description %}O iellos é uma rede social que reúne pessoas a seus amigos e àqueles com quem trabalham, estudam e convivem. As pessoas participam do iellos para manter contato com seus amigos, compartilhar links e vídeos e aprender mais sobre as pessoas que conhecem.{% endblock %}"/>
+        <meta name="keywords" content="iellos, vídeos, fotos, rede social, amigos, informação, blog, compartilhamento"/>
+        <link rel="icon" href="images/home.png" type="image/x-icon" />
 
-        <link rel="stylesheet" href="{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/css/style.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
-        <script type='text/javascript' src='{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/js/jquery-1.4.2.min.js'></script>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+        <script type='text/javascript' src='js/jquery-1.4.2.min.js'></script>
         <script type="text/javascript">
 
           var _gaq = _gaq || [];
@@ -29,14 +27,13 @@
             var J = jQuery.noConflict();
         </script>
         <!-- fonts -->
-        <link href='{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/css/fontes.css' rel='stylesheet' type='text/css' />
+        <link href='css/fontes.css' rel='stylesheet' type='text/css' />
         <style type="text/css">
             .widget {
                 width: 265px !important;
 
             }
         </style>
-        {% block extra_head %}{% endblock %}
     </head>
 
     <body class="archive category category-photography">
@@ -47,20 +44,9 @@
                         <!-- header navigation menu -->
                         <div class="menu-header-container">
                             <ul id="menu-header" class="nav">
-                                <li><a href="/"><img src="{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/images/home.png"></a></li>
-                                {% block menu_nav %}
-                                {% endblock %}
+                                <li><a href="/"><img src="images/home.png"></a></li>
                             </ul>
                         </div>
-
-                        <!-- user welcome -->
-                        {% if user.is_authenticated %}
-                            <ul id="social-strip-icons" class="style-switcher nav"><li><a href="{% url acct_logout %}">{% trans 'Sair' %}</a></li></ul>
-                            <ul id="social-strip-icons" class="style-switcher nav"><li><a href="/">@{{ user.username }}, {% trans 'seja vindo!' %}</a></li></ul>
-                        {% else %}
-                            <ul id="social-strip-icons" class="style-switcher nav"><li><a href="{% url acct_login %}">{% trans 'Entrar' %}</a></li></ul>
-                            <ul id="social-strip-icons" class="style-switcher nav"><li><a href="{% url acct_signup %}">{% trans 'Registrar' %}</a></li></ul>
-                        {% endif %}
 
 
                     </div><!-- frame inside -->
@@ -77,27 +63,15 @@
 
                         <!-- grab the logo -->
                         <h1>
-                            <div class="logo"> <div style="padding: 15px 15px 15px 15px; color: #fff;">{% block right_1_titulo %}{% trans 'Login' %}{% endblock %}</div></div>
+                            <div class="logo"> <div style="padding: 15px 15px 15px 15px; color: #fff;">O que aconteceu?</div></div>
                         </h1>
 
                         <!-- otherwise show the site title and description -->
-
+                        <div class="widget">
+                            &rarr; Devido o grande número de usuários, estamos migrando de servidor! Desculpe-nos pelo incoveniente, logo logo estaremos de volta!!!
+                        </div>
                         <!-- grab sidebar widgets -->
-                        {% block right_1_content %}
-                            <!-- exemplo -->
-                            <div class="widget">
-                                <div class="wpcf7" id="wpcf7-f1-p216-o1">
-                                <form method="POST" class="wpcf7-form login" action="{% url acct_login %}">{% csrf_token %}
-                                        {{ form|as_uni_form }}
-                                    <input type="submit" class="wpcf7-submit" value="{% trans 'Entrar' %}"/>
-                                </form>
-
-                                </div>
-                            </div>
-                            <div style="padding: 10px 10px 10px 10px;">
-                                <a href="{% url acct_passwd_reset %}">&rarr; {% trans 'Esqueci minha senha!' %}</a>
-                            </div>
-                        {% endblock %}
+                        
                        
                     </div><!--sidebar-->
 
@@ -112,10 +86,9 @@
                             <div class="box">
                                 <div class="shadow clearfix">
                                     <div class="frame" style="width: 560px;">
-                                        {% block titulo %}{% endblock %}
-                                        {% block content %}
-                                            <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/Iv2ZN1ARtYQ?rel=0&autohide=1&iv_load_policy=3&showinfo=0" frameborder="0" allowfullscreen></iframe>
-                                        {% endblock %}
+                                        <h2>Descupe, houve um erro no servidor!</h2>
+                                        <p>Devido o grande número de usuários, estamos migrando de servidor! Desculpe-nos pelo incoveniente, logo logo estaremos de volta!!!</p>
+                                        <img src="images/500.jpg" />
                                     </div><!-- frame -->
                                 </div><!-- shadow -->
                             </div><!-- box -->
@@ -143,9 +116,9 @@
                         <p class="copyright">&copy; 2012 <a href="/">iellos</a></p>
                         <div class="menu-footer-container">
                             <ul id="menu-footer" class="footernav">
-                                <li><a href="{% url all_elos 1 %}">{% trans 'Elos' %}</a></li>
-                                <li><a href="{% url termos_de_uso %}">{% trans 'Termos' %}</a></li>
-                                <li><a href="{% url politica_de_privacidade %}">{% trans 'Privacidade' %}</a></li>
+                                <li><a href="">Elos</a></li>
+                                <li><a href="">Termos</a></li>
+                                <li><a href="">Privacidade</a></li>
                             </ul>
                         </div>
                     </div><!--bar-->
@@ -155,11 +128,11 @@
 
         <!-- google analytics code -->
 
-        <script type='text/javascript' src='{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/js/fancybox/jquery.fancybox-1.3.4.pack.js'></script>
-        <script type='text/javascript' src='{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/js/jquery.sticky.js'></script>
-        <script type='text/javascript' src='{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/js/quicksand/jquery-css-transform.js'></script>
-        <script type='text/javascript' src='{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/js/quicksand/jquery.easing.1.3.js'></script>
-        <script type='text/javascript' src='{% if STATIC_URL %}{{ STATIC_URL }}{% else %}/static/{% endif %}iellos/js/quicksand/quicksand.js'></script>
+        <script type='text/javascript' src='js/fancybox/jquery.fancybox-1.3.4.pack.js'></script>
+        <script type='text/javascript' src='js/jquery.sticky.js'></script>
+        <script type='text/javascript' src='js/quicksand/jquery-css-transform.js'></script>
+        <script type='text/javascript' src='js/quicksand/jquery.easing.1.3.js'></script>
+        <script type='text/javascript' src='js/quicksand/quicksand.js'></script>
         <script type="text/javascript">
 	 /* <![CDATA[  */   
 
