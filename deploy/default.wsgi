@@ -7,6 +7,6 @@ sys.path.insert(0, PROJECT_ROOT_PATH)
 sys.path.insert(0, join(PROJECT_ROOT_PATH, "lib"))
 sys.path.insert(0, join(PROJECT_ROOT_PATH, "src"))
 sys.path.insert(0, join(PROJECT_ROOT_PATH, "apps"))
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings_production'
 import django.core.handlers.wsgi
 application = django.core.handlers.wsgi.WSGIHandler()
