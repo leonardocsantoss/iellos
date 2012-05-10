@@ -27,7 +27,7 @@ def elos_image(users, max, tam):
     retorno = u""
     if len(users) >= max:
         usuarios = users[:max]
-        thumbnail_options = dict(size=(20, 20), crop=True, bw=True)
+        thumbnail_options = dict(size=(20, 20), crop=True)
     else:
         usuarios = users
         xy = tam / int((len(users) ** 0.5)+0.8)
