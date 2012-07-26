@@ -51,7 +51,6 @@ class VotacaoEloFechado(models.Model):
     def verifica(self):
         if len(self.elo.membros.all()) == len(self.ja_votou.all()):
             if self.sim >= self.nao:
-                print 'sim'+str(self.sim)+'nao'+str(self.nao)
                 self.elo.membros.add(self.votado)
                 self.votado.message_set.create(message=ugettext(u"<b>@%s</b> você acaba de ser aceito no elo <a href=\"%s\">%s</a>!") % (self.votado.username, self.elo.get_absolute_url(), self.elo.nome ))
                 self.delete()

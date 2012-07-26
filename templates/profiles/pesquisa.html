@@ -13,7 +13,7 @@
     {% if result_profs %}
     <h2>{% trans 'Perfis' %}</h2>
     {% for resultado in result_profs %}
-        <div class="tread_comments_foto"><a href="{{ resultado.get_absolute_url }}"><img src="{% thumbnail user.profileimage.image 60x60 crop %}"/></a></div>
+        <div class="tread_comments_foto"><a href="{{ resultado.get_absolute_url }}"><img src="{% thumbnail resultado.profileimage.image 60x60 crop %}"/></a></div>
         <div class="tread_comments_texto">
             <a href="{{ resultado.get_absolute_url }}"><strong>{{ resultado.user.first_name }}</strong></a>
             <br/>
@@ -40,7 +40,7 @@
     {% if result_posts %}
     <h2>{% trans 'Posts' %}</h2>
     {% for resultado in result_posts %}
-        <div class="tread_comments_foto"><a href="{% url profiles resultado.user.username %}"><img src="{% profile_image resultado.user '60x60' %}"/></a></div>
+        <div class="tread_comments_foto"><a href="{% url profiles resultado.user.username %}"><img src="{% thumbnail resultado.user.profileimage.image 60x60 crop %}"/></a></div>
         <div class="tread_comments_texto">
             {% trans 'Elos' %} {% for elo in resultado.elos.all %}<a href="{% url elo elo.slug %}?post_id={{ resultado.id }}"><strong>{{ elo }}</strong></a>{% if not forloop.last %} | {% endif %}{% endfor %}
             <br/>
