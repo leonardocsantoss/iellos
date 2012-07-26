@@ -2,3 +2,4 @@
 *.sqlite
 settings_production.py
 /media
+/nbproject
