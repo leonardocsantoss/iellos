@@ -1,0 +1,4 @@
+*.pyc
+*.sqlite
+settings_production.py
+/media
