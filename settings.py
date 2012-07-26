@@ -176,12 +176,3 @@ LOGIN_URL = "/"
 
 #Fechar a secao quando o browser fechar
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
-
-#Configurations for send email
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'iellos@iellos.com'
-EMAIL_HOST_PASSWORD = '$iellos$++'
-EMAIL_SUBJECT_PREFIX = 'iellos '
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
