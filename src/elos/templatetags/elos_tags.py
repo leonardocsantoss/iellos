@@ -30,7 +30,7 @@ def elos_image(users, max, tam):
         thumbnail_options = dict(size=(20, 20), crop=True)
     else:
         usuarios = users
-        xy = tam / int((len(users) ** 0.5)+0.8)
+        xy = tam / int(((len(users)+1) ** 0.5)+0.8)
         thumbnail_options = dict(size=(xy, xy), crop=True)
     retorno = ''
     for user in usuarios:

@@ -30,11 +30,15 @@ class Elo(models.Model):
         return reverse('elos.views.elo', kwargs={'slug': self.slug})
 
 # SIGNAL, SEMPRE SALVAR O NOME DO ELO COMO SLUG.
-def elo_post_save(sender, instance, created, **kwargs):
-    if created:
-        instance.slug = u"%s" % (slugify(instance.nome))
-        instance.save()
-signals.post_save.connect(elo_post_save, sender=Elo)
+def elo_slug_pre_save(signal, instance, sender, **kwargs):
+    slug = slugify(instance.nome)
+    new_slug = slug
+    counter = 0
+    while Elo.objects.filter(slug=new_slug).exclude(id=instance.id).count() > 0:
+        counter += 1
+        new_slug = '%s-%d'%(slug, counter)
+    instance.slug = new_slug
+signals.pre_save.connect(elo_slug_pre_save, sender=Elo)
 
 
 

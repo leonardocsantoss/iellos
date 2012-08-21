@@ -62,7 +62,7 @@ def profile(text):
 
 
 def url(text, link, link_url):
-    if 'iellos.com/apps/' in link_url: classe = 'apps'
+    if u'iellos.com/apps/' in link_url: classe = 'apps'
     else: classe = 'url'
     return text.replace(force_unicode(link), u'<a href="%s" target="_blank" class="%s" >%s</a>' % (force_unicode(link), classe, force_unicode(link_url)))
 
@@ -80,8 +80,8 @@ def parser(texto):
     rex = re.compile(r'(?:(?P<http>https?://)|(?P<www>www.))(www.)?(\S+)')
 
     for grupos in rex.findall(retorno):
-        link = ''.join(grupos)
-        if not 'http://' in str(link) and not 'https://' in link:
+        link = u''.join(grupos)
+        if not u'http://' in str(link) and not u'https://' in link:
             link_url = 'http://' + link
         else:
             link_url = link
