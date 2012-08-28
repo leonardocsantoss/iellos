@@ -3,6 +3,8 @@
 
 import os
 PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(PROJECT_ROOT_PATH, 'src'))
+sys.path.insert(0, os.path.join(PROJECT_ROOT_PATH, 'lib'))
 
 LOCAL = True
 DEBUG = True
