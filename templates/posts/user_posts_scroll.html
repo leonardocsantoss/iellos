@@ -1,9 +1,0 @@
-{% load i18n uni_form %}
-
-{% block content %}
-    {% for post in posts.object_list %}
-        <li>
-            {% include 'posts/post.html' %}
-        </li>
-    {% endfor %}
-{% endblock %}

@@ -1,0 +1,7 @@
+django==1.7
+pillow
+mysql-python
+gunicorn
+easy-thumbnails
+feedparser
+simplejson
